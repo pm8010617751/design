@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>डिझाईनर - आपल्या नावाचे स्टुडिओ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent1:#ff7aa2;
+      --accent2:#7afcff;
+      --accent3:#ffd56b;
+      --glass: rgba(255,255,255,0.04);
+      --text:#f3f4f6;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#071428 0%, #06202f 50%, #08111a 100%); color:var(--text);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    header{position:sticky; top:0; z-index:40; backdrop-filter: blur(6px); background:linear-gradient(180deg, rgba(3,7,18,0.6), rgba(3,7,18,0.35)); border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:46px;height:46px;border-radius:12px; background:linear-gradient(135deg,var(--accent1),var(--accent2)); display:flex;align-items:center;justify-content:center;font-weight:800;color:#021;box-shadow:0 6px 18px rgba(0,0,0,0.5)}
+    .brand h1{font-size:18px;margin:0}
+    nav a{color:var(--text); text-decoration:none; margin-left:18px; font-weight:600}
+    .hero{max-width:1100px; margin:28px auto; display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; padding:18px}
+    .hero-card{background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border-radius:16px; padding:28px; box-shadow: 0 10px 30px rgba(2,6,23,0.7); position:relative; overflow:hidden}
+    .hero-card::after{content:''; position:absolute; right:-80px; top:-80px; width:240px; height:240px; background:radial-gradient(circle at 30% 30%, rgba(250,122,162,0.12), transparent 30%), radial-gradient(circle at 70% 70%, rgba(122,252,255,0.08), transparent 30%); transform:rotate(25deg)}
+    .hero h2{font-size:28px;margin:0 0 8px 0}
+    .hero p{margin:0 0 18px 0; line-height:1.6; color: #d6e3f0}
+    .cta{display:flex; gap:12px}
+    .btn{padding:12px 18px;border-radius:10px;border:0; cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#021}
+    .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text)}
+
+    /* Gallery */
+    .gallery-wrap{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:16px; padding:12px}
+    .slider{position:relative; overflow:hidden; border-radius:12px}
+    .slides{display:flex; transition:transform 600ms cubic-bezier(.22,.9,.36,1)}
+    .slide{min-width:100%;height:280px; display:flex; align-items:center; justify-content:center; background-size:cover; background-position:center}
+    .dots{display:flex; gap:8px; justify-content:center; margin-top:12px}
+    .dot{width:10px;height:10px;border-radius:50%; background:rgba(255,255,255,0.15); cursor:pointer}
+    .dot.active{background:var(--accent3)}
+
+    /* Services */
+    .sections{max-width:1100px;margin:30px auto;padding:0 18px}
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
+    .service{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:18px; border-radius:12px; min-height:140px; transition:transform 300ms ease; display:flex; flex-direction:column; gap:8px}
+    .service:hover{transform:translateY(-8px)}
+    .service h3{margin:0}
+
+    /* Contact */
+    .contact{display:grid; grid-template-columns:1fr 380px; gap:18px; align-items:start}
+    form{background:var(--glass); padding:18px; border-radius:12px}
+    label{display:block; font-size:13px; margin-top:8px}
+    input, textarea{width:100%; padding:10px; margin-top:6px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--text)}
+    .socials{display:flex; gap:10px; margin-top:12px}
+    .socials a{display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent2),var(--accent1)); box-shadow:0 8px 22px rgba(0,0,0,0.5)}
+
+    footer{max-width:1100px;margin:28px auto; padding:12px 18px; color:rgba(255,255,255,0.6)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .contact{grid-template-columns:1fr}
+      .hero-card{order:2}
+    }
+
+    /* Animated sparkles */
+    .sparkle{position:absolute; width:10px;height:10px;border-radius:50%; background:var(--accent3); filter:blur(6px); opacity:0.9; animation: float 6s infinite}
+    @keyframes float{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.15)}100%{transform:translateY(0) scale(1)}}
+
+    /* Scroll reveal helper */
+    .reveal{opacity:0; transform:translateY(18px); transition:all 600ms cubic-bezier(.2,.9,.3,1)}
+    .reveal.visible{opacity:1; transform:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo">PM</div>
+        <div>
+          <h1>PM CREATION</h1>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6)">PAVAN MASKE</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#home">HOME</a>
+        <a href="#services">SEVICES</a>
+        <a href="#gallery">DESIGN</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-card reveal">
+        <h2>PM CREATION</h2>
+        <p>We create logos, branding, social posts. Our goal is to bring your ideas to life.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">CONTACT ME</button>
+          <button class="btn btn-ghost" onclick="openGallery()">OPEN THE DESIGN</button>
+        </div>
+        <div style="position:relative;margin-top:18px; height:72px">
+          <div class="sparkle" style="left:10px; top:6px; animation-duration:5s"></div>
+          <div class="sparkle" style="left:120px; top:12px; background:var(--accent2); animation-duration:7s"></div>
+          <div class="sparkle" style="left:220px; top:34px; background:var(--accent1); animation-duration:9s"></div>
+        </div>
+      </div>
+
+      <div class="gallery-wrap reveal">
+        <div class="slider" id="slider">
+          <div class="slides" id="slides">
+            <div class="slide" style="background-image:url('logo.jpg')"></div>
+            <div class="slide" style="background-image:url('banner1.jpg')"></div>
+            <div class="slide" style="background-image:url('wedding.png')"></div>
+          </div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+
+    <section id="services" class="sections">
+      <h2 style="margin:0 0 12px 0">Our services</h2>
+      <div class="cards">
+        <div class="service reveal">
+          <h3>Logo design</h3>
+          <p>Creates logos that are simple, eye-catching, and match your brand.</p>
+        </div>
+        <div class="service reveal">
+          <h3>Branding & Identity</h3>
+          <p>Creates logos and brand guidelines that will last a long time.</p>
+        </div>
+        <div class="service reveal">
+          <h3>social media posts</h3>
+          <p>Attractive posts for Instagram, Facebook </p>
+        </div>
+        <div class="service reveal">
+          <h3></h3>
+          <p></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="sections">
+      <h2 style="margin:0 0 12px 0">DESIGN</h2>
+      <p style="margin-top:0;color:rgba(255,255,255,0.6)">The examples below are demos — you can change your photos later.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:12px">
+        <img src="bhagwat1.jpg" alt="sample" style="width:100%; height:170px; object-fit:cover; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.6)" loading="lazy">
+        <img src="RAGHAV.jpg" alt="sample" style="width:100%; height:170px; object-fit:cover; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.6)" loading="lazy">
+        <img src="logo2.png" alt="sample" style="width:100%; height:170px; object-fit:cover; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.6)" loading="lazy">
+      </div>
+    </section>
+
+    <section id="contact" class="sections">
+      <h2 style="margin:0 0 12px 0">Contact</h2>
+      <div class="contact">
+        <form id="contactForm" onsubmit="sendForm(event)">
+          <label>name</label>
+          <input type="text" id="name" required>
+          <label>E-mail</label>
+          <input type="email" id="email" required>
+          <label>massage</label>
+          <textarea id="msg" rows="5" required></textarea>
+          <div style="display:flex; gap:10px; margin-top:12px">
+            <button type="submit" class="btn btn-primary">पाठवा</button>
+            <button type="button" class="btn btn-ghost" onclick="openWhatsApp()">WhatsApp वर संपर्क</button>
+          </div>
+        </form>
+
+        <aside style="padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:12px;">
+          <h3>Connect with us</h3>
+          <p style="color:rgba(255,255,255,0.6)">Tell us briefly about your project — we'll be in touch soon.</p>
+          <div class="socials">
+            <a href="#" title="Instagram" onclick="window.open('https://instagram.com','_blank')" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="https://www.instagram.com/_p_m_45/?igsh=ajFsMDhrYmhma3ln#"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="#021" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#" title="Facebook" onclick="window.open('https://facebook.com','_blank')" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 011-1h3V2z" stroke="#021" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#" title="YouTube" onclick="window.open('https://youtube.com','_blank')" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 9.5a2.5 2.5 0 00-1.75-1.75C18.9 7 12 7 12 7s-6.9 0-8.25.75A2.5 2.5 0 002 9.5 26 26 0 002 14.5a2.5 2.5 0 001.75 1.75C5.1 17 12 17 12 17s6.9 0 8.25-.75A2.5 2.5 0 0022 14.5c0-2 .1-5 0-5z" stroke="#021" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#" title="WhatsApp" onclick="openWhatsApp()" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.1a9 9 0 10-2.6 6.1L22 22l-2.2-0.6A8.9 8.9 0 0021 12.1z" stroke="#021" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      © PM CREATION • 
+    </footer>
+  </main>
+
+  <script>
+    // Simple slider
+    const slidesEl = document.getElementById('slides');
+    const dotsEl = document.getElementById('dots');
+    const slides = Array.from(slidesEl.children);
+    let idx=0;
+    function makeDots(){
+      slides.forEach((_,i)=>{
+        const d = document.createElement('div'); d.className='dot' + (i===0? ' active':''); d.addEventListener('click', ()=>go(i)); dotsEl.appendChild(d);
+      });
+    }
+    function go(i){ idx = i; update(); }
+    function update(){
+      slidesEl.style.transform = `translateX(-${idx*100}%)`;
+      Array.from(dotsEl.children).forEach((d,di)=> d.classList.toggle('active', di===idx));
+    }
+    function next(){ idx = (idx+1)%slides.length; update(); }
+    makeDots(); setInterval(next,4000);
+
+    // Open gallery helper
+    function openGallery(){ document.getElementById('gallery').scrollIntoView({behavior:'smooth'}); }
+
+    // Contact (front-end only)
+    function sendForm(e){ e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      if(!name||!email||!msg){ alert('कृपया सर्व फील्ड भरा'); return }
+      // For demo: show a nice message
+      alert('धन्यवाद '+name+'! आपला संदेश आम्हाला प्राप्त झाला आहे. आम्ही लवकरच संपर्क करू.')
+      document.getElementById('contactForm').reset();
+    }
+
+    // WhatsApp quick contact (change number below)
+    function openWhatsApp(){ const phone = '8010617751'; const text = encodeURIComponent('नमस्कार! माझ्याकडे एक प्रोजेक्ट आहे.'); window.open(`https://wa.me/${phone}?text=${text}`,'_blank') }
+
+    // Scroll reveal using IntersectionObserver
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting) ent.target.classList.add('visible');
+      })
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  </script>
+</body>
+</html>
